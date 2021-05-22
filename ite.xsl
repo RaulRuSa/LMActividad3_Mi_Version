@@ -3,24 +3,32 @@
     <xsl:template match="/">
         <html>
             <head>
+                <link rel="stylesheet" type="text/css" href="css/styles.css"/>
                 <title><xsl:value-of select="ite/@nombre"/></title>
             </head>
             <body>
-                <h1><xsl:value-of select="ite/@nombre"/></h1>
-                <h3><xsl:value-of select="ite/empresa"/></h3>
-                <div>Telefono:
-                    <a><xsl:attribute name="href">
-                        <xsl:value-of select="ite/telefono"/></xsl:attribute><!--enlace-->
-                        <xsl:value-of select="ite/telefono"/> <!-- texto-->
-                    </a>
-                </div>
+                <header>
+                    <h1><xsl:value-of select="ite/@nombre"/></h1>
+                </header>
+                <main>
+                <nav>
+                    <h3 class="nombre_empresa"><xsl:value-of select="ite/empresa"/></h3>
+                    <div class="datos_nav">Telefono:
+                        <a><xsl:attribute name="href">
+                            <xsl:value-of select="ite/telefono"/></xsl:attribute><!--enlace-->
+                            <xsl:value-of select="ite/telefono"/> <!-- texto-->
+                        </a>
+                        <a><xsl:attribute name="href">
+                            <xsl:value-of select="ite/@nombre"/></xsl:attribute><!--enlace-->
+                            <xsl:value-of select="ite/@nombre"/> <!-- texto-->
+                        </a>
+                    </div>
+                </nav>   
                 
-                <a><xsl:attribute name="href">
-                    <xsl:value-of select="ite/@nombre"/></xsl:attribute><!--enlace-->
-                    <xsl:value-of select="ite/@nombre"/> <!-- texto-->
-                </a>
+                
+                
                 <!--tabla ID PROFESORES-->
-                <table border="1"> <!--pongo el border solo para comprobarlo, ponerlo luego en CSS-->
+                <table>
                     <caption>TABLA ID PROFESORES</caption>
                     <thead>
                         <tr>
@@ -54,7 +62,7 @@
                 </ul>
 
                <!--Tabla CICLOS--> 
-                <table border="1"> <!--pongo el border solo para comprobarlo, ponerlo luego en CSS-->
+                <table>
                 <caption>TABLA CICLOS</caption>
                     <thead>
                         <tr>
@@ -86,7 +94,7 @@
                     </tbody>      
                 </table>    
                 <form action="servido.php" method="get">
-                    <fieldset><legend>Solicitud de informacion</legend>
+                    <fieldset><legend>Solicitud de información</legend>
                         <div>
                             <P>Datos Personales</P>
                             <label for="nombre">Nombre</label>
@@ -107,11 +115,13 @@
                             <p>Observaciones</p>
                             <textarea name="observaciones" rows="5" cols="50"/>
                         </div>
-                        <input type="submit" value="Enviar"/>
-                        <input type="reset" value="Limpiar Formulario"/>
+                        <input class="boton" type="submit" value="Enviar"/>
+                        <input class="boton" type="reset" value="Limpiar Formulario"/>
     
                     </fieldset>
-                </form>           
+                </form>          
+                </main>
+                 
             </body>
             
         </html>
